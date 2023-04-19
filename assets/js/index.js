@@ -5,24 +5,42 @@ const fs = require('fs');
 // TODO: Create an array of questions for user input
 const questions = [];
 
-const readme = ({ title, description, usage, contribute, tests }) => {
-    return `# ${title}
+const generateReadme = ({ title, description, usage, contribute, tests }) => {
+    return `
+    # ${title}
 
     ## Description
     ${description}
 
+    ## Table of Contents
+
+    * [Installation](#installation)
+    * [Usage](#usage)
+    * [License](#license)
+    * [Contributing](#contributing)
+    * [Tests](#tests)
+    * [Questions](#questions)
+    
+    ## Installation
+
     ## Usage
     ${usage}
+
+    ## License
     
     ## How to Contribute
     ${contribute}
     
     ## Tests
-    ${tests}`
-
+    ${tests}
+    
+    ## Questions
+    
+    `
 };
 
 
+// This will be added to the function init()
 inquirer
     .prompt([
         {
@@ -57,7 +75,7 @@ inquirer
     // TODO: Create a function to write README file
     .then((data) => {
 
-        fs.writeFile('README.md', readme(data), (error) => {
+        fs.writeFile('README.md', generateReadme(data), (error) => {
             error
                 ? console.log(error)
                 : console.log('success')
