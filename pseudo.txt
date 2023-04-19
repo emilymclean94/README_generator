@@ -9,3 +9,15 @@
 9. copy the readme structure into the const variable you create for the readme (refer to the mini project for structure)
 10. save the answers to string literal and link to read me --> ${--name of prompt here--}
 11. add the .then with the fs.writeFile()
+
+
+--Readme must have sections:
+    Title
+    Description
+    Table of contents
+    Installation
+    Usage
+    License
+    Contributors
+    Tests
+    Questions
