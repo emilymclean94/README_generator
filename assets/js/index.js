@@ -3,44 +3,46 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 
 
-const generateReadme = ({ title, description, usage, license, contribute, tests, github, email}) => {
-    return `
-    # ${title}
+const generateMarkdown = ({ title, description, usage, license, contribute, tests, github, email }) => {
+    return `# ${title}
+![GitHub license](${renderLicenseBadge(license)})
 
-    ## Description
-    ${description}
+## Description
+${description}
 
-    ## Table of Contents
+## Table of Contents
 
-    * [Installation](#installation)
-    * [Usage](#usage)
-    * [License](#license)
-    * [Contributing](#contributing)
-    * [Tests](#tests)
-    * [Questions](#questions)
-    
-    ## Installation
+* [Installation](#installation)
+* [Usage](#usage)
+* [License](#license)
+* [Contributing](#contributing)
+* [Tests](#tests)
+* [Questions](#questions)
 
-    ## Usage
-    ${usage}
+## Installation
 
-    ## License
-    ${license}
+## Usage
+${usage}
 
-    ## How to Contribute
-    ${contribute}
-    
-    ## Tests
-    ${tests}
-    
-    ## Questions
-    [Click here](https://github.com/${github}) to view my GitHub profile.
+## License
+This project is licensed under the ${license} license.
 
-    If you have any questions please contact me at ${email}
-    `
+## How to Contribute
+${contribute}
+
+## Tests
+${tests}
+
+## Questions
+[Click here](https://github.com/${github}) to view my GitHub profile.
+
+If you have any questions please contact me at ${email}
+`;
 };
 
 // TODO: Create an array of questions for user input
+const questions = [];
+
 // This will be added to the function init()
 inquirer
     .prompt([
@@ -67,7 +69,7 @@ inquirer
                 { name: 'MIT', value: "MIT" },
                 { name: 'GNU General Public License', value: 'GNU' },
                 { name: 'Apache', value: 'Apache' },
-                { name: 'Microsoft Public Licenses', value: 'Microsoft Public License' },
+                { name: 'Microsoft Public Licenses', value: 'MPL' },
                 { name: 'Berkeley Software Distribution (BSD)', value: 'BSD' }
             ],
 
@@ -95,13 +97,14 @@ inquirer
     ])
     // TODO: Create a function to write README file
     .then((data) => {
-        fs.writeFile('./README.md', generateReadme(data), (error) => {
+        fs.writeFile('./README.md', generateMarkdown(data), (error) => {
             error
                 ? console.log(error)
                 : console.log('success')
         })
     });
 
+module.exports = generateMarkdown;
 
 
 // TODO: Create a function to initialize app
