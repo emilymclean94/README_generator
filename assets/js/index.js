@@ -3,10 +3,7 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 
 
-// TODO: Create an array of questions for user input
-const questions = [];
-
-const generateReadme = ({ title, description, usage, license, contribute, tests }) => {
+const generateReadme = ({ title, description, usage, license, contribute, tests, github, email}) => {
     return `
     # ${title}
 
@@ -37,11 +34,13 @@ const generateReadme = ({ title, description, usage, license, contribute, tests 
     ${tests}
     
     ## Questions
-    
+    [Click here](https://github.com/${github}) to view my GitHub profile.
+
+    If you have any questions please contact me at ${email}
     `
 };
 
-
+// TODO: Create an array of questions for user input
 // This will be added to the function init()
 inquirer
     .prompt([
@@ -57,40 +56,46 @@ inquirer
         },
         {
             type: 'input',
-            message: 'Please provide instructions and examples of how to use your project',
+            message: 'Please provide instructions and examples of how to use your project.',
             name: 'usage',
         },
         {
-            type:'list',
+            type: 'list',
             message: 'Which license are you using for your application?',
             name: 'license',
             choices: [
-                {name:'MIT', value:"MIT"},
-                {name: 'GNU General Public License', value: 'GNU'},
-                {name:'Apache', value: 'Apache'},
-                {name: 'Microsoft Public Licenses', value: 'Microsoft Public License'},
-                {name:'Berkeley Software Distribution (BSD)', value: 'BSD'}
+                { name: 'MIT', value: "MIT" },
+                { name: 'GNU General Public License', value: 'GNU' },
+                { name: 'Apache', value: 'Apache' },
+                { name: 'Microsoft Public Licenses', value: 'Microsoft Public License' },
+                { name: 'Berkeley Software Distribution (BSD)', value: 'BSD' }
             ],
 
         },
         {
             type: 'input',
-            message: 'How can others contribute?',
+            message: 'How can others contribute to this project?',
             name: 'contribute',
         },
         {
             type: 'input',
-            message: 'Provide examples on how to run the tests written for your application',
+            message: 'Provide examples on how to run the tests written for your application:',
             name: 'tests',
         },
+        {
+            type: 'input',
+            message: 'What is your GitHub username?',
+            name: 'github'
+        },
+        {
+            type: 'input',
+            message: 'What is your email address?',
+            name: 'email'
+        }
     ])
-
-    // Read up on ternary operators
-
     // TODO: Create a function to write README file
     .then((data) => {
-
-        fs.writeFile('README.md', generateReadme(data), (error) => {
+        fs.writeFile('./README.md', generateReadme(data), (error) => {
             error
                 ? console.log(error)
                 : console.log('success')
@@ -100,7 +105,7 @@ inquirer
 
 
 // TODO: Create a function to initialize app
-// function init() {}
+function init() { }
 
 // // Function call to initialize app
 // init();

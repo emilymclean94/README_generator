@@ -1,8 +1,8 @@
 
-    # sjkd
+    # fun times
 
     ## Description
-    jkds
+    to have fun times
 
     ## Table of Contents
 
@@ -16,17 +16,19 @@
     ## Installation
 
     ## Usage
-    alsj
+    have fun
 
     ## License
     Apache
 
     ## How to Contribute
-    jmfkl
+    by having fun
     
     ## Tests
-    saas
+    just do it
     
     ## Questions
-    
+    [Click here](https://github.com/emilymclean94) to view my GitHub profile.
+
+    If you have any questions please contact me at emilymclean93@gmail.com
     
