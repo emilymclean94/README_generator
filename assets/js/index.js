@@ -2,10 +2,11 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
+
 // TODO: Create an array of questions for user input
 const questions = [];
 
-const generateReadme = ({ title, description, usage, contribute, tests }) => {
+const generateReadme = ({ title, description, usage, license, contribute, tests }) => {
     return `
     # ${title}
 
@@ -27,7 +28,8 @@ const generateReadme = ({ title, description, usage, contribute, tests }) => {
     ${usage}
 
     ## License
-    
+    ${license}
+
     ## How to Contribute
     ${contribute}
     
@@ -57,6 +59,19 @@ inquirer
             type: 'input',
             message: 'Please provide instructions and examples of how to use your project',
             name: 'usage',
+        },
+        {
+            type:'list',
+            message: 'Which license are you using for your application?',
+            name: 'license',
+            choices: [
+                {name:'MIT', value:"MIT"},
+                {name: 'GNU General Public License', value: 'GNU'},
+                {name:'Apache', value: 'Apache'},
+                {name: 'Microsoft Public Licenses', value: 'Microsoft Public License'},
+                {name:'Berkeley Software Distribution (BSD)', value: 'BSD'}
+            ],
+
         },
         {
             type: 'input',
