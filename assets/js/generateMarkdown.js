@@ -19,20 +19,20 @@ function renderLicenseBadge(license) {
 function renderLicenseLink(license) {
   switch(license) {
     case 'MIT':
-      return '(https://opensource.org/licenses/MIT)';
+      return 'https://opensource.org/licenses/MIT';
     case 'GNU':
-      return '(https://www.gnu.org/licenses/gpl-3.0)';
+      return 'https://www.gnu.org/licenses/gpl-3.0';
     case 'Apache':
-      return '(https://opensource.org/licenses/Apache-2.0)';
+      return 'https://opensource.org/licenses/Apache-2.0';
     case 'BSD':
-      return '(https://opensource.org/licenses/BSD-3-Clause)';
+      return 'https://opensource.org/licenses/BSD-3-Clause';
     default:
       return '';
   }
 };
 
 //Function to generate the markdown
-const generateMarkdown = ({ title, description, usage, license, contribute, tests, github, email }) => {
+const generateMarkdown = ({ title, description, usage, license, contributing, tests, github, email }) => {
   return `# ${title}
 ${renderLicenseBadge(license)}
 
@@ -56,8 +56,8 @@ ${usage}
 ## License
 To learn more about the license used in this project [click here](${renderLicenseLink(license)}).
 
-## How to Contribute
-${contribute}
+## Contributing
+${contributing}
 
 ## Tests
 ${tests}
