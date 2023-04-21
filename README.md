@@ -8,6 +8,7 @@ This project allows a user to quickly generate a README.md by answering prompts 
 
 * [Usage](#usage)
 * [License](#license)
+* [Credits](#credits)
 * [Questions](#questions)
 
 ## Usage
@@ -18,6 +19,8 @@ To view a demonstration on how to use the app [click here](https://drive.google.
 ## License
 To learn more about the license used in this project [click here](https://opensource.org/licenses/Apache-2.0).
 
+## Credits
+I'd like to thank my instructor, TAs, the Ask BCS staff, and most importantly, my class mates for the positivity and encouragement.  
 
 ## Questions
 [Click here](https://github.com/emilymclean94) to view my GitHub profile.
